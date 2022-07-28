@@ -6,7 +6,7 @@
 /*   By: ljahn <ljahn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 10:22:19 by ljahn             #+#    #+#             */
-/*   Updated: 2022/05/04 07:15:46 by ljahn            ###   ########.fr       */
+/*   Updated: 2022/05/02 10:46:00 by ljahn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void			*ptr;
-	unsigned long	total;
+	void	*ptr;
 
-	total = count * size;
-	if (count && total/count != size)
-		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (NULL);

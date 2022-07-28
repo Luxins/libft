@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_sortstrstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljahn <ljahn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 10:25:13 by ljahn             #+#    #+#             */
-/*   Updated: 2022/05/02 10:49:00 by ljahn            ###   ########.fr       */
+/*   Created: 2022/07/27 12:11:35 by ljahn             #+#    #+#             */
+/*   Updated: 2022/07/27 12:12:15 by ljahn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_sortstrstr(char **strstr)
 {
-	unsigned int	i;
-	char			*res;
+	char	*tmp;
+	int		i;
+	int		ordered;
 
-	if (!s)
-		return (0);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	res = malloc(len * sizeof(char) + 1);
-	if (res == 0)
-		return (0);
-	i = 0;
-	while (i < len)
+	ordered = 0;
+	while (ordered == 0)
 	{
-		res[i] = s[start + i];
-		i++;
+		i = 0;
+		ordered = 1;
+		while (strstr[i] && strstr[i + 1])
+		{
+			if (ft_strcmp(strstr[i], strstr[i + 1]) > 0)
+			{
+				tmp = strstr[i];
+				strstr[i] = strstr[i + 1];
+				strstr[i + 1] = tmp;
+				ordered = 0;
+			}
+			i++;
+		}
 	}
-	res[i] = 0;
-	return (res);
 }

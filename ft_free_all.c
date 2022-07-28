@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_free_all.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljahn <ljahn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 10:25:13 by ljahn             #+#    #+#             */
-/*   Updated: 2022/05/02 10:49:00 by ljahn            ###   ########.fr       */
+/*   Created: 2022/07/28 11:33:12 by ljahn             #+#    #+#             */
+/*   Updated: 2022/07/28 11:33:22 by ljahn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+/**
+ * @brief frees strstrs
+ * 
+ * @param to_free 
+ */
+void	ft_free_all(char **to_free)
 {
-	unsigned int	i;
-	char			*res;
+	int	i;
 
-	if (!s)
-		return (0);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	res = malloc(len * sizeof(char) + 1);
-	if (res == 0)
-		return (0);
 	i = 0;
-	while (i < len)
+	while (to_free[i])
 	{
-		res[i] = s[start + i];
+		free(to_free[i]);
 		i++;
 	}
-	res[i] = 0;
-	return (res);
+	free(to_free);
 }
